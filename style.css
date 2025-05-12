@@ -1,0 +1,33 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  animation: fadeIn 2s ease-in;
+}
+
+.title {
+  font-size: 3em;
+  color: #00ff99;
+}
+
+.motive {
+  font-size: 1.5em;
+  margin-top: 1rem;
+  color: #dddddd;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
