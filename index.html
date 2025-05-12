@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Пятница на Пике</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #00ffd5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 8px;
+      text-align: center;
+    }
+    canvas {
+      margin-top: 30px;
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Пятница на Пике</h1>
+  <p id="quote">Загружаем мотивацию...</p>
+
+  <h2>Прогресс по жиму лёжа</h2>
+  <table id="workout-table">
+    <tr>
+      <th>Дата</th>
+      <th>Вес (кг)</th>
+    </tr>
+    <tr>
+      <td>2025-05-10</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>2025-05-12</td>
+      <td>65</td>
+    </tr>
+  </table>
+
+  <canvas id="progressChart" width="400" height="200"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const quotes = [
+      "Каждый день — шанс стать лучше.",
+      "Ты ближе, чем думаешь.",
+      "Настоящая сила рождается в терпении.",
+      "Пока другие сдаются — ты идёшь дальше.",
+      "Боль временна. Сила — навсегда."
+    ];
+    document.getElementById("quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+    const table = document.getElementById('workout-table');
+    const dates = [];
+    const weights = [];
+
+    for (let i = 1; i < table.rows.length; i++) {
+      dates.push(table.rows[i].cells[0].innerText);
+      weights.push(parseInt(table.rows[i].cells[1].innerText));
+    }
+
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Жим лёжа (кг)',
+          data: weights,
+          borderColor: 'rgba(0, 255, 213, 1)',
+          backgroundColor: 'rgba(0, 255, 213, 0.2)',
+          borderWidth: 2,
+          tension: 0.3,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
