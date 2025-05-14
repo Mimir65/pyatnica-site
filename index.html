@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пятница на Пике</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00ffcc;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+      margin-top: 10px;
+    }
+    .achievements span {
+      background-color: #333;
+      padding: 8px 12px;
+      margin: 5px;
+      display: inline-block;
+      border-radius: 10px;
+      color: #00ffcc;
+    }
+    canvas {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Пятница на Пике</h1>
+
+  <div class="section">
+    <h2>🔥 Мотивация</h2>
+    <div class="card">
+      <p>«Не важно, сколько раз ты упал. Важно — сколько раз поднялся». </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 Статистика</h2>
+    <div class="card">
+      <p><strong>Всего отжиманий:</strong> 1520</p>
+      <p><strong>Всего подтягиваний:</strong> 840</p>
+      <p><strong>Личный рекорд по отжиманиям:</strong> 80</p>
+      <p><strong>Личный рекорд по подтягиваниям:</strong> 20</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📈 Прогресс</h2>
+    <div class="card">
+      <canvas id="pushupsChart" width="400" height="200"></canvas>
+      <canvas id="pullupsChart" width="400" height="200" style="margin-top:20px;"></canvas>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📝 План тренировок</h2>
+    <div class="card">
+      <p><strong>Понедельник:</strong> Отжимания на выносливость (3 подхода до отказа + 2 на время)</p>
+      <p><strong>Среда:</strong> Подтягивания + Спина (3×макс + 3 упражнения на широчайшие)</p>
+      <p><strong>Пятница:</strong> Микс + Объём (пуш+пул, круговая, 5 раундов)</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🏅 Ачивки</h2>
+    <div class="card achievements">
+      <span>💪 1000 отжиманий</span>
+      <span>🧗 500 подтягиваний</span>
+      <span>🔥 Тренировки 3 недели подряд</span>
+    </div>
+  </div>
+
+  <script>
+    const pushupsChart = new Chart(document.getElementById("pushupsChart"), {
+      type: 'line',
+      data: {
+        labels: ["1 мая", "4 мая", "7 мая", "10 мая", "13 мая"],
+        datasets: [{
+          label: 'Отжимания',
+          data: [180, 200, 220, 250, 280],
+          borderColor: '#00ffcc',
+          backgroundColor: 'rgba(0, 255, 204, 0.2)',
+          tension: 0.3,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: '#f1f1f1' } }
+        },
+        scales: {
+          x: { ticks: { color: '#f1f1f1' } },
+          y: { ticks: { color: '#f1f1f1' } }
+        }
+      }
+    });
+
+    const pullupsChart = new Chart(document.getElementById("pullupsChart"), {
+      type: 'line',
+      data: {
+        labels: ["1 мая", "4 мая", "7 мая", "10 мая", "13 мая"],
+        datasets: [{
+          label: 'Подтягивания',
+          data: [70, 80, 85, 90, 100],
+          borderColor: '#ffaa00',
+          backgroundColor: 'rgba(255, 170, 0, 0.2)',
+          tension: 0.3,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: '#f1f1f1' } }
+        },
+        scales: {
+          x: { ticks: { color: '#f1f1f1' } },
+          y: { ticks: { color: '#f1f1f1' } }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
