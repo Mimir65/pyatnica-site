@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пятница на Пике</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .input-field {
+            padding: 5px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6200ea;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Запиши свой прогресс</h1>
+        
+        <!-- Поля для ввода данных -->
+        <div>
+            <label for="pushups">Отжимания:</label>
+            <input type="number" id="pushups" class="input-field" placeholder="Сколько отжался?" required>
+        </div>
+        <div>
+            <label for="pullups">Подтягивания:</label>
+            <input type="number" id="pullups" class="input-field" placeholder="Сколько подтянулся?" required>
+        </div>
+        
+        <!-- Кнопка для сохранения -->
+        <button onclick="saveResults()">Сохранить результаты</button>
+
+        <!-- Отображение сохранённых результатов -->
+        <div class="results" id="resultsDisplay"></div>
+    </div>
+
+    <script>
+       
